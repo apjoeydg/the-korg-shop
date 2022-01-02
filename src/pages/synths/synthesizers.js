@@ -1,14 +1,18 @@
 import * as React from 'react'
-import Layout from '../components/layout'
-import { graphql } from 'gatsby'
+import Layout from '../../components/layout'
+import { graphql, Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 
-const SynthPage = ({data: {allWpSynths: {edges}}}) => {
+const SynthsPage = ({data: {allWpSynths: {edges}}}) => {
   return (
     <Layout pageTitle="Korg synths">
       <p>A list of Korg synths will be displayed here</p>
       {edges.map((item) => {
-        const synth = item.node.synth;
-        return <p key={item.node.id}>{synth.name} : {synth.price}</p>
+        const korg = item.node.synth;
+        const slug = item.node.slug;
+        return <Link to={`/synths/${slug}`}>
+        <p key={item.node.id}>{korg.name}</p>
+      </Link>
       })}
     </Layout>
   )
@@ -31,6 +35,7 @@ export const query = graphql`
           weight
         }
         id
+        slug
       }
     }
   }
@@ -39,4 +44,4 @@ export const query = graphql`
 
 `
 
-export default SynthPage
+export default SynthsPage

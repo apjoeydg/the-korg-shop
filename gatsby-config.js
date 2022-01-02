@@ -12,7 +12,7 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         schema:{
-            timeout:100000
+            timeout:1000000
         },
         /*
          * De volledige URL van je Headless WordPress site's GraphQL API.

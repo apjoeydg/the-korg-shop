@@ -24,7 +24,7 @@ query {
         <ul>
           <li><Link to="/">Home</Link></li>
           
-          <li><Link to="/synths">Synths</Link></li>
+          <li><Link to="/synths/synthesizers">Synths</Link></li>
         </ul>
       </nav>
       <main>
