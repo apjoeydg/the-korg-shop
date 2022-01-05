@@ -5,7 +5,9 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 
 
-const SynthDetailPage = ({data: {wpSynths: {synth: korg}}}) => {
+const SynthDetailPage = ({data: {wpSynths: {synth: korg}}}) => { //destructuring 3 levels diep gebeurt hier
+console.log(korg);
+
 
   const image = getImage(korg.image.localFile)
   const backpicture = getImage(korg.pictures.back.localFile)

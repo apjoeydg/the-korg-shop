@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import {container} from './layout.module.css'
+import { container, nav, navLinks, navLinkItem, navLinkText, siteTitle } from './layout.module.css'
+
 import { useStaticQuery, graphql } from 'gatsby'
 
 
@@ -19,12 +20,12 @@ query {
   return (
     <div className={container}>
       <title> {data.site.siteMetadata.title}</title>
-      <header>{data.site.siteMetadata.title}</header>
+      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
       <nav className={nav}>
         <ul className={navLinks}>
           <li className={navLinkItem}><Link className={navLinkText} to="/">Home</Link></li>
           
-          <li className={navLinkItem}><Link className={navLinkItem} to="/synths/synthesizers">Synths</Link></li>
+          <li className={navLinkItem}><Link className={navLinkText} to="/synths/synthesizers">Synths</Link></li>
         </ul>
       </nav>
       <main>
