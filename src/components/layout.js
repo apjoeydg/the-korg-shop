@@ -4,7 +4,7 @@ import {container} from './layout.module.css'
 import { useStaticQuery, graphql } from 'gatsby'
 
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ children }) => {
 
 const data = useStaticQuery(graphql`
 query {
@@ -18,17 +18,17 @@ query {
 
   return (
     <div className={container}>
-      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+      <title> {data.site.siteMetadata.title}</title>
       <header>{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
+      <nav className={nav}>
+        <ul className={navLinks}>
+          <li className={navLinkItem}><Link className={navLinkText} to="/">Home</Link></li>
           
-          <li><Link to="/synths/synthesizers">Synths</Link></li>
+          <li className={navLinkItem}><Link className={navLinkItem} to="/synths/synthesizers">Synths</Link></li>
         </ul>
       </nav>
       <main>
-        <h1>{pageTitle}</h1>
+        
         {children}
       </main>
     </div>
