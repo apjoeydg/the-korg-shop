@@ -19,8 +19,7 @@ query {
 
   return (
     <div className={container}>
-      <title> {data.site.siteMetadata.title}</title>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
+      
       <nav className={nav}>
         <ul className={navLinks}>
           <li className={navLinkItem}><Link className={navLinkText} to="/">Home</Link></li>
@@ -31,6 +30,7 @@ query {
       <main>
         
         {children}
+        
       </main>
     </div>
   )

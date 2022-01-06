@@ -9,7 +9,13 @@ import {
   headerPicture,
   headerTitle,
   CTA,
+  section,
+  subtitle,
+  synths,
 } from "../page.module.css"
+import {Synth} from '../components/synth';
+
+
 
 
 const IndexPage = ({
@@ -19,7 +25,7 @@ const IndexPage = ({
 }) => {
   const image = getImage(homePage.headerhome.picture.localFile)
 
-  
+  console.log(homePage);
 
 
         return ( 
@@ -32,7 +38,7 @@ const IndexPage = ({
             dangerouslySetInnerHTML={{
               __html: homePage.headerhome.description,
             }}
-          />
+          /> 
           <a className={CTA} target="__blank" href={homePage.callToAction.link}>
             {homePage.callToAction.description}
           </a>
@@ -45,7 +51,26 @@ const IndexPage = ({
           />
         </div>
           </div>
-        </Layout>
+          
+          
+          
+
+  <div className={section}>
+    <h2 className={subtitle}>{homePage.featuredSynths.name}</h2>
+    <p>{homePage.featuredSynths.description}</p> 
+    <div className={synths}>
+      {homePage.featuredSynths.synth.map(synth => {
+        return(<Synth slug={`synths/${synth.slug}`} key={synth.id} synth={synth} />)
+      })}
+    </div>
+  </div>
+
+  </Layout>
+
+
+        
+
+        
             
             
         )
@@ -53,7 +78,7 @@ const IndexPage = ({
     
 export const query = graphql`
   query  {
-  wpPage {
+  wpPage (slug: {eq: "home-page"}){
     homePage {
       fieldGroupName
       headerhome {
