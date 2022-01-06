@@ -9,7 +9,7 @@ const SynthDetailPage = ({data: {wpSynths: {synth: korg}}}) => { //destructuring
 console.log(korg);
 
 
-  const image = getImage(korg.image.localFile)
+  const image = getImage(korg.image.localFile)  //getImage helperfunctie om op te slaan in const
   const backpicture = getImage(korg.pictures.back.localFile)
   const toppicture = getImage(korg.pictures.top.localFile)
   const frontpicture = getImage(korg.pictures.front.localFile)

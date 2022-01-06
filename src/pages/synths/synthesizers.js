@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 
 const SynthsPage = ({data: {allWpSynths: {edges}}}) => {
+  console.log(edges);
   return (
     <Layout pageTitle="Korg synths">
       <p>A list of Korg synths will be displayed here</p>

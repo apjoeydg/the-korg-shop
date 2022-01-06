@@ -1,107 +1,109 @@
 import Layout from '../components/layout'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from "react"
-import { Link } from 'gatsby'
-import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image' 
+import { Link, useStaticQuery, graphql } from "gatsby"
+import {
+  header,
+  headerInfo,
+  headerPicture,
+  headerTitle,
+  CTA,
+} from "../page.module.css"
 
 
+const IndexPage = ({
+  data: {
+    wpPage: { homePage },
+  },
+}) => {
+  const image = getImage(homePage.headerhome.picture.localFile)
 
-const IndexPage = ({data}) => {
- console.log('blah');
-  console.log(data);
+  
 
 
         return ( 
-            <main>
-            <Layout pageTitle="welcome to the-korg-shop">
-                <p>Home page</p>
-                
-               <StaticImage src="../images/korglogo.jpg" alt="Welcome"></StaticImage>
-            </Layout>
-            </main>
+            
+          <Layout>
+          <div className={header}>
+          <div className={headerInfo}>
+          <h1 className={headerTitle}>{homePage.headerhome.title}</h1>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: homePage.headerhome.description,
+            }}
+          />
+          <a className={CTA} target="__blank" href={homePage.callToAction.link}>
+            {homePage.callToAction.description}
+          </a>
+        </div>
+        <div>
+          <GatsbyImage
+          className={headerPicture}
+            image={image}
+            alt={homePage.headerhome.picture.altText}
+          />
+        </div>
+          </div>
+        </Layout>
+            
             
         )
     }
-    export const query = graphql`
-  
-    query  {
-  wpPage(slug: {eq: "home"}) {
+    
+export const query = graphql`
+  query  {
+  wpPage {
     homePage {
+      fieldGroupName
       headerhome {
         description
         title
         picture {
+          altText
           localFile {
             childImageSharp {
               gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
-        calltoaction {
-          description
-          link {
-            url
-          }
-        }
+      }
+      callToAction {
+        description
+        link
       }
       featuredSynths {
+        description
+        name
         synth {
           ... on WpSynths {
             id
+            slug
             synth {
               description
               measurements
-              midi
               name
+              midi
               price
               usb
               voices
               weight
               image {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData(placeholder: BLURRED)
                   }
                 }
-                altText
-              }
-              pictures {
-                back {
-                  altText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(placeholder: BLURRED)
-                    }
-                  }
-                }
-                front {
-                  altText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(placeholder: BLURRED)
-                    }
-                  }
-                }
-                top {
-                  altText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(placeholder: BLURRED)
-                    }
-                  }
-                }
               }
             }
-            slug
           }
         }
       }
     }
   }
 }
+
 `
-
-
   
 export default IndexPage

@@ -3,7 +3,7 @@ module.exports = {
     title: "The Korg Shop",
     description: "All about Korg synths!!!",
     author: "Joey De Greef",
-    siteUrl: "https://gatsbystarterdefaultsource.gatsbyjs.io/",
+    siteUrl: "http://the-korg-shop.local/",
   },
   plugins: [
     "gatsby-plugin-image",
