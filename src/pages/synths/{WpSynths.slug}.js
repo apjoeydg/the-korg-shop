@@ -5,7 +5,19 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 
 
-const SynthDetailPage = ({data: {wpSynths: {synth: korg}}}) => { //destructuring 3 levels diep gebeurt hier
+const SynthDetailPage = ({
+  data: {
+    wpSynths: {
+      synth: korg,
+      
+      weightranges : {nodes:weightranges},
+      polyphony : {nodes:polyphony},
+      priceranges: {nodes:priceranges}
+
+    
+    }
+  }
+  }) => { //destructuring 3 levels diep gebeurt hier
 console.log(korg);
 
 
@@ -18,9 +30,18 @@ console.log(korg);
     <Layout pageTitle="Synth">
       <p>synth content</p>
       <div>
+      <div>
+            {weightranges.map((weightrange, i) => (
+              <span key={i}>
+                {weightrange.name} {i + 1 < weightrange.length && "- "}
+              </span>
+            ))}
+       </div>
+
+
       <h3>{korg.name}</h3>
       <GatsbyImage image={image} alt={korg.image.altText} />
-      <p>{korg.price}</p>
+      <p>Price : {korg.price}€</p>
       <div dangerouslySetInnerHTML={{
        __html:  korg.description,
       }}
@@ -45,8 +66,8 @@ console.log(korg);
 
 export const query = graphql`
   query ($id: String) {
-    wpSynths(id: {eq: $id}) {
-      synth {
+  wpSynths(id: {eq: $id}) {
+    synth {
       description
       measurements
       midi
@@ -69,6 +90,7 @@ export const query = graphql`
               gatsbyImageData(placeholder: BLURRED)
             }
           }
+          altText
         }
         front {
           localFile {
@@ -76,6 +98,7 @@ export const query = graphql`
               gatsbyImageData(placeholder: BLURRED)
             }
           }
+          altText
         }
         top {
           localFile {
@@ -83,11 +106,31 @@ export const query = graphql`
               gatsbyImageData(placeholder: BLURRED)
             }
           }
+          altText
         }
+      }
+      type {
+        name
+      }
+    }
+    weightranges {
+      nodes {
+        name
+      }
+    }
+    polyphony {
+      nodes {
+        name
+      }
+    }
+    priceranges {
+      nodes {
+        name
       }
     }
   }
 }
+
 `
 
 export default SynthDetailPage

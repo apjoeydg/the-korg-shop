@@ -5,12 +5,12 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 const SynthsPage = ({
   data: {
-    allWpSynths: {edges:synthInfo}, 
-    wpPage: {synthPage},
-  },
-  }) => {
-console.log(synthInfo, synthPage );
+  allWpSynths: {edges:synthInfo},
+  wpPage:{synthPage},
 
+  },
+}) => {
+  console.log(synthInfo, synthPage)
   return (
     <Layout pageTitle="Korg synths">
       <p>A list of Korg synths will be displayed here</p>
@@ -25,9 +25,9 @@ console.log(synthInfo, synthPage );
   )
 }
 export const query = graphql`
-  
-  query  {
-  wpPage(slug: {eq: "synths-page"}) {
+  query 
+    
+    { wpPage(slug: {eq: "synths-page"}) {
     synthPage {
       description
       bannerFoto {
@@ -39,34 +39,22 @@ export const query = graphql`
         }
       }
     }
-    id
-    slug
   }
   allWpSynths {
     edges {
       node {
         synth {
-          description
-          measurements
-          midi
           name
-          price
-          usb
-          voices
-          weight
-          image {
-            altText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED)
-              }
-            }
-          }
         }
+        id
+        slug
       }
     }
   }
+ 
 }
+
+
 `
 
 export default SynthsPage
