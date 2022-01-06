@@ -53,11 +53,16 @@ const IndexPage = ({
           </div>
           
           
-          
+        
 
   <div className={section}>
     <h2 className={subtitle}>{homePage.featuredSynths.name}</h2>
-    <p>{homePage.featuredSynths.description}</p> 
+    <div
+      
+      dangerouslySetInnerHTML={{
+            __html: homePage.featuredSynths.description,
+          }}
+    /> 
     <div className={synths}>
       {homePage.featuredSynths.synth.map(synth => {
         return(<Synth slug={`synths/${synth.slug}`} key={synth.id} synth={synth} />)

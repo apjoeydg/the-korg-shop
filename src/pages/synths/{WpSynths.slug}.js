@@ -21,7 +21,10 @@ console.log(korg);
       <h3>{korg.name}</h3>
       <GatsbyImage image={image} alt={korg.image.altText} />
       <p>{korg.price}</p>
-      <p>{korg.description}</p>
+      <div dangerouslySetInnerHTML={{
+       __html:  korg.description,
+      }}
+      />
       <p>MIDI : {`${korg.midi}`}</p>
       
       <p>USB : {`${korg.usb}`}</p>
