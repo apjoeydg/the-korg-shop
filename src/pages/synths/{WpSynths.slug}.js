@@ -30,16 +30,31 @@ console.log(korg);
     <Layout pageTitle="Synth">
       <p>synth content</p>
       <div>
+      <h3>{korg.name}</h3>
       <div>
+            {polyphony.map((pol, i) => (
+              <span key={i}>
+               polyphony : {pol.name} {i + 1 < pol.length && "- "}
+              </span>
+            ))}
+       </div>
+       <div>
             {weightranges.map((weightrange, i) => (
               <span key={i}>
-                {weightrange.name} {i + 1 < weightrange.length && "- "}
+               weightrange : {weightrange.name} {i + 1 < weightrange.length && "- "}
+              </span>
+            ))}
+       </div>
+       <div>
+            {priceranges.map((pricerange, i) => (
+              <span key={i}>
+               pricerange : {pricerange.name} {i + 1 < pricerange.length && "- "}
               </span>
             ))}
        </div>
 
 
-      <h3>{korg.name}</h3>
+      
       <GatsbyImage image={image} alt={korg.image.altText} />
       <p>Price : {korg.price}€</p>
       <div dangerouslySetInnerHTML={{
