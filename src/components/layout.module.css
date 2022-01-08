@@ -4,14 +4,14 @@ html {
   font: 112.5%/1.45em sans-serif, georgia, serif;
   box-sizing: border-box;
   overflow-y: scroll;
-  background-color: #000;
+  background-color: rgb(255, 255, 255);
 }
 body {
   overflow: hidden;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-family: sans-serif, georgia, serif;
   font-weight: normal;
   word-wrap: break-word;

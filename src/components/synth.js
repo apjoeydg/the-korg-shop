@@ -8,7 +8,6 @@ import {
     synthName,
     
   } from "../components/synth.module.css"
-  import 'bootstrap/dist/css/bootstrap.min.css';
 export const Synth = ({ synth, slug }) => {
   const synthpic = getImage(synth.synth.image.localFile)
   return (
